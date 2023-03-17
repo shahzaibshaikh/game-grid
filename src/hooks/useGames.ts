@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import apiClient from '../services/api-client';
 
-interface Games {
+export interface Games {
   id: number;
   name: string;
+  background_image: string;
 }
 
 interface FetchGamesResponse {
@@ -16,17 +17,12 @@ function useGames() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    const controller = new AbortController();
-
     apiClient
-      .get<FetchGamesResponse>('/games', { signal: controller.signal })
+      .get<FetchGamesResponse>('/games')
       .then(res => setGames(res.data.results))
       .catch(error => {
-        if (error instanceof RTCError) return;
         setError(error.message);
       });
-
-    return () => controller.abort();
   }, []);
 
   return { games, error };
