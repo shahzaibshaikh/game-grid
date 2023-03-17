@@ -7,8 +7,6 @@ function GameCardSkeleton() {
         lg: '280px',
         xl: '250px'
       }}
-      borderRadius={10}
-      overflow='hidden'
     >
       <Skeleton height='200px' />
       <CardBody>
