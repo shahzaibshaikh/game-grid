@@ -5,9 +5,10 @@ import GenreListSkeleton from './GenreListSkeleton';
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-function GenreList({ onSelectGenre }: Props) {
+function GenreList({ onSelectGenre, selectedGenre }: Props) {
   const { data, isLoading } = useGenres();
   return (
     <List>
@@ -20,7 +21,11 @@ function GenreList({ onSelectGenre }: Props) {
               boxSize='32px'
               borderRadius={8}
             />
-            <Button variant='link' onClick={() => onSelectGenre(genre)}>
+            <Button
+              color={genre.id === selectedGenre?.id ? '#31a7cd' : ''}
+              variant='link'
+              onClick={() => onSelectGenre(genre)}
+            >
               {genre.name}
             </Button>
           </HStack>
