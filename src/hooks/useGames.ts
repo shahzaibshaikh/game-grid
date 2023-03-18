@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { GameQuery } from '../App';
 import apiClient from '../services/api-client';
 import useData from './useData';
 import { Genre } from './useGenres';
@@ -17,16 +18,16 @@ export interface Games {
   metacritic: number;
 }
 
-function useGames(selectedGenre: Genre | null, selectedPlatform: Platform | null) {
+function useGames(gameQuery: GameQuery) {
   return useData<Games>(
     '/games',
     {
       params: {
-        genres: selectedGenre?.id,
-        platforms: selectedPlatform?.id
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id
       }
     },
-    [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery.genre?.id, gameQuery.platform?.id]
   );
 }
 export default useGames;
