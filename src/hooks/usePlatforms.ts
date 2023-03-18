@@ -1,10 +1,5 @@
 import useData from './useData';
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platform } from './useGames';
 
 function usePlatforms() {
   return useData<Platform>('/platforms/lists/parents');
