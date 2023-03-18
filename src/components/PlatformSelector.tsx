@@ -1,19 +1,21 @@
 import { Box, Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react';
 import { FaChevronDown } from 'react-icons/fa';
+import usePlatforms from '../hooks/usePlatforms';
 
 function PlatformSelector() {
+  const { data, error, isLoading } = usePlatforms();
+
+  if (error) return null;
   return (
     <Box paddingLeft={10}>
       <Menu>
         <MenuButton as={Button} rightIcon={<FaChevronDown />}>
-          Actions
+          Platforms
         </MenuButton>
         <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
+          {data.map(platform => (
+            <MenuItem key={platform.id}>{platform.name}</MenuItem>
+          ))}
         </MenuList>
       </Menu>
     </Box>

@@ -18,7 +18,8 @@ interface Props {
 }
 
 function GenreList({ onSelectGenre, selectedGenre }: Props) {
-  const { data, isLoading } = useGenres();
+  const { data, error, isLoading } = useGenres();
+
   return (
     <List>
       {isLoading && <GenreListSkeleton />}
