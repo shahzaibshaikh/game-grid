@@ -34,7 +34,7 @@ function App() {
         <NavBar onSearch={searchText => setGameQuery({ ...gameQuery, searchText })} />
       </GridItem>
       <Show above='lg'>
-        <GridItem area='aside' paddingLeft={10} marginTop={8}>
+        <GridItem area='aside' paddingLeft={10} marginTop={10}>
           <GenreList
             selectedGenre={gameQuery.genre}
             onSelectGenre={genre => setGameQuery({ ...gameQuery, genre })}
