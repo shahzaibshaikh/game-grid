@@ -11,7 +11,7 @@ interface Props {
 function PlatformSelector({ onSelectPlatform, selectedPlatform }: Props) {
   const { data, error, isLoading } = usePlatforms();
 
-  if (error) return null;
+  if (error.length > 0) return null;
   return (
     <Box paddingLeft={10}>
       <Menu>
