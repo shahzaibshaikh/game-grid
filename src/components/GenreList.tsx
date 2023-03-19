@@ -1,4 +1,4 @@
-import { Button, Heading, HStack, Image, List, ListItem } from '@chakra-ui/react';
+import { Box, Button, Heading, HStack, Image, List, ListItem } from '@chakra-ui/react';
 import useGenres, { Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 import GenreListSkeleton from './GenreListSkeleton';
@@ -12,7 +12,7 @@ function GenreList({ onSelectGenre, selectedGenre }: Props) {
   const { data, error, isLoading } = useGenres();
 
   return (
-    <>
+    <Box>
       <Heading fontSize='3xl' marginBottom={2}>
         Genres
       </Heading>
@@ -42,7 +42,7 @@ function GenreList({ onSelectGenre, selectedGenre }: Props) {
           </ListItem>
         ))}
       </List>
-    </>
+    </Box>
   );
 }
 
